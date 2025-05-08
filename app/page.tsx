@@ -32,25 +32,22 @@ export default function Home() {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-gray-50 to-gray-100 py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Strata Management Made Simple</h2>
-              <p className="text-xl text-gray-600 mb-8">
-                A comprehensive portal for owners and committee members to manage your strata-titled property under the
-                NSW Strata Schemes Management Act (2015).
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button asChild size="lg">
-                  <Link href="/login">Owner Portal</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <Link href="/about">Learn More</Link>
-                </Button>
-              </div>
+        <section
+          className="bg-cover bg-center bg-no-repeat py-20 text-center text-white"
+          style={{ backgroundImage: "url('/modernBuldingBackground.png')" }}
+          >
+          <div className="bg-black/50 py-16 px-4">
+            <h1 className="text-4xl font-bold mb-4">Strata Management Made Simple</h1>
+            <p className="max-w-2xl mx-auto text-lg mb-6">
+              A comprehensive portal for owners and committee members to manage your strata-titled property under the NSW Strata Schemes Management Act (2015).
+            </p>
+            <div className="flex justify-center space-x-4">
+              <Button>Owner Portal</Button>
+              <Button variant="outline">Learn More</Button>
             </div>
           </div>
         </section>
+
 
         {/* Features Section */}
         <section className="py-20">
