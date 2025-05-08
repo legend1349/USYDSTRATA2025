@@ -1,6 +1,8 @@
 "use client"
+
 import type React from "react"
-import { useState, useEffect } from "react"
+
+import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -19,11 +21,6 @@ export default function Login() {
     rememberMe: false,
   })
 
-  useEffect(() => {
-    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    console.log(`Your API key is: ${apiKey}`);
-  }, []);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
@@ -36,16 +33,20 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+
     // Simulate authentication
     await new Promise((resolve) => setTimeout(resolve, 1500))
+
     // For demo purposes, hardcode a successful login
     if (formData.email && formData.password) {
       // Set a cookie to track login state
       document.cookie = `isLoggedIn=true; path=/; max-age=${formData.rememberMe ? 60 * 60 * 24 * 30 : 60 * 60 * 24}`
+
       toast({
         title: "Login successful",
         description: "Welcome to your Strata Manager dashboard.",
       })
+
       router.push("/dashboard")
     } else {
       toast({
@@ -54,6 +55,7 @@ export default function Login() {
         variant: "destructive",
       })
     }
+
     setIsLoading(false)
   }
 
@@ -82,6 +84,7 @@ export default function Login() {
           </div>
         </div>
       </header>
+
       <main className="flex-grow flex items-center justify-center bg-gray-50 py-12 px-4">
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
@@ -90,8 +93,9 @@ export default function Login() {
             </div>
             <h2 className="mt-6 text-3xl font-bold text-gray-900">Sign in to your account</h2>
             <p className="mt-2 text-sm text-gray-600">Access your strata property management portal</p>
-            <p className="mt-2 text-sm text-gray-600">Your API key is: {process.env.NEXT_PUBLIC_API_KEY}</p>
+
           </div>
+
           <div className="bg-white p-8 rounded-lg shadow-md">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
@@ -107,6 +111,7 @@ export default function Login() {
                   className="mt-1"
                 />
               </div>
+
               <div>
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
@@ -125,12 +130,14 @@ export default function Login() {
                   className="mt-1"
                 />
               </div>
+
               <div className="flex items-center">
                 <Checkbox id="remember-me" checked={formData.rememberMe} onCheckedChange={handleCheckboxChange} />
                 <Label htmlFor="remember-me" className="ml-2 text-sm text-gray-600">
                   Remember me
                 </Label>
               </div>
+
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? (
                   <span className="flex items-center justify-center">
@@ -164,6 +171,7 @@ export default function Login() {
                 )}
               </Button>
             </form>
+
             <div className="mt-6">
               <p className="text-center text-sm text-gray-600">
                 Don't have an account?{" "}
@@ -175,6 +183,7 @@ export default function Login() {
           </div>
         </div>
       </main>
+
       <footer className="bg-gray-800 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
@@ -215,4 +224,21 @@ export default function Login() {
               <address className="text-gray-300 not-italic">
                 123 Strata Street
                 <br />
-                Sydney, NSW 
+                Sydney, NSW 2000
+                <br />
+                Australia
+                <br />
+                <Link href="mailto:info@stratamanager.com" className="hover:text-white">
+                  info@stratamanager.com
+                </Link>
+              </address>
+            </div>
+          </div>
+          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; {new Date().getFullYear()} Strata Manager. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
