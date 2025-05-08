@@ -192,26 +192,4 @@ export default function Login() {
                   <Link href="/about" className="text-gray-300 hover:text-white">
                     About
                   </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="text-gray-300 hover:text-white">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/login" className="text-gray-300 hover:text-white">
-                    Login
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <address className="text-gray-300 not-italic">
-                123 Strata Street
-                <br />
-                Sydney, NSW 2000
-                <br />
-                Australia
-                <br />
-                <Link href="mailto:info@stratamanager.com"
+               
